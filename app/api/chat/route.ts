@@ -53,7 +53,7 @@ const AGENT_STAGES = [
   { id: "classifier",  label: "Query Classifier",      icon: "🔍", ms: 300  },
   { id: "retriever",   label: "Knowledge Retriever",   icon: "📚", ms: 600  },
   { id: "builder",     label: "Context Builder",       icon: "🏗️", ms: 900  },
-  { id: "llm",         label: "GROQ LLM (llama3-70b)", icon: "🧠", ms: 1200 },
+  { id: "llm",         label: "GROQ LLM (qwen3.8-27b)", icon: "🧠", ms: 1200 },
   { id: "formatter",   label: "Response Formatter",    icon: "✨", ms: 1500 },
 ];
 
@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
         send({ type: "stage", stage: "streaming" });
 
         const groqStream = await groq.chat.completions.create({
-          model: "llama3-70b-8192",
+          model: "qwen/qwen3.8-27b",
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
             ...messages,

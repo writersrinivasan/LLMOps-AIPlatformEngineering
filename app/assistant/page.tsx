@@ -230,7 +230,7 @@ export default function AssistantPage() {
                   { step: "1", icon: "🔍", title: "Query Classifier", desc: "Checks if question is on-topic for LLMOps", color: "#818cf8" },
                   { step: "2", icon: "📚", title: "Knowledge Retriever", desc: "Scans LLMOps knowledge across all 7 modules", color: "#60a5fa" },
                   { step: "3", icon: "🏗️", title: "Context Builder", desc: "Assembles relevant context for the LLM", color: "#34d399" },
-                  { step: "4", icon: "🧠", title: "GROQ LLM", desc: "llama3-70b generates expert answer at ultra speed", color: "#a78bfa" },
+                  { step: "4", icon: "🧠", title: "GROQ LLM", desc: "qwen/qwen3.8-27b generates expert answer at ultra speed", color: "#a78bfa" },
                   { step: "5", icon: "✨", title: "Response Formatter", desc: "Structures and validates the final response", color: "#f472b6" },
                 ].map((s) => (
                   <div key={s.step} className="flex items-start gap-2.5">

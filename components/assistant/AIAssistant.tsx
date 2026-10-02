@@ -356,7 +356,7 @@ export default function AIAssistant() {
         style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(0,0,0,0.2)" }}
       >
         {[
-          { label: "Model", value: "llama3-70b-8192", icon: "🧠", color: "#a78bfa" },
+          { label: "Model", value: "qwen/qwen3.8-27b", icon: "🧠", color: "#a78bfa" },
           { label: "Provider", value: "GROQ", icon: "⚡", color: "#fbbf24" },
           { label: "Scope", value: "LLMOps Only", icon: "🎯", color: "#34d399" },
           { label: "Queries", value: String(totalQueries), icon: "💬", color: "#60a5fa" },

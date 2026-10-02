@@ -52,7 +52,7 @@ const STAGES: Stage[] = [
     icon: "🧠",
     color: "#a78bfa",
     glow: "rgba(167,139,250,0.5)",
-    description: "llama3-70b-8192 generating response",
+    description: "qwen/qwen3.8-27b generating response",
   },
   {
     id: "formatter",
@@ -346,7 +346,7 @@ export default function AgentViz({ activeStage, completedStages }: Props) {
               <div className="text-lg">⚡</div>
               <div>
                 <div className="text-xs font-bold text-purple-300">
-                  GROQ llama3-70b-8192 is generating your answer
+                  GROQ qwen/qwen3.8-27b is generating your answer
                 </div>
                 <div className="text-xs text-slate-500 mt-0.5">
                   Streaming tokens at ultra-low latency via GROQ inference engine
