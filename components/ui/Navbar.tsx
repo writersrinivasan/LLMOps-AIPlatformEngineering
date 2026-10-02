@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const modules = [
   { num: 1, short: "MLOps→LLMOps", href: "/modules/module1", color: "#818cf8" },
@@ -15,6 +16,14 @@ const modules = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const isAssistant = pathname.startsWith("/assistant");
+  const [pulse, setPulse] = useState(false);
+
+  // Animate the pulse dot every 3s
+  useEffect(() => {
+    const t = setInterval(() => setPulse((p) => !p), 3000);
+    return () => clearInterval(t);
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
@@ -66,12 +75,44 @@ export default function Navbar() {
           {modules.find((m) => pathname.startsWith(m.href))?.short ?? "Home"}
         </div>
 
-        {/* Right CTA */}
-        <Link href="/">
-          <button className="text-xs px-3 py-2 rounded-lg glass glass-hover text-slate-300 hidden sm:flex items-center gap-2">
-            <span>📋</span> Overview
-          </button>
-        </Link>
+        {/* Right side: AI Assistant + Overview */}
+        <div className="flex items-center gap-2">
+          <Link href="/assistant">
+            <button
+              className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-300 hover:scale-105"
+              style={
+                isAssistant
+                  ? {
+                      background: "linear-gradient(135deg, #667eea, #764ba2)",
+                      color: "#ffffff",
+                      boxShadow: "0 0 16px rgba(99,102,241,0.5)",
+                    }
+                  : {
+                      background: "rgba(99,102,241,0.12)",
+                      border: "1px solid rgba(99,102,241,0.3)",
+                      color: "#a5b4fc",
+                    }
+              }
+            >
+              {/* Pulsing live dot */}
+              <span
+                className="w-1.5 h-1.5 rounded-full shrink-0"
+                style={{
+                  background: "#34d399",
+                  boxShadow: `0 0 ${pulse ? "8px" : "3px"} #34d399`,
+                  transition: "box-shadow 0.6s ease",
+                }}
+              />
+              🧠 AI Assistant
+            </button>
+          </Link>
+
+          <Link href="/">
+            <button className="text-xs px-3 py-2 rounded-lg glass glass-hover text-slate-300 hidden sm:flex items-center gap-2">
+              <span>📋</span> Overview
+            </button>
+          </Link>
+        </div>
       </div>
     </nav>
   );
